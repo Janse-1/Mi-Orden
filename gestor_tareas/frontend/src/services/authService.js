@@ -17,3 +17,19 @@ export async function login(username, password) {
         return false;
     }
 }
+
+
+export async function register(username, email, password) {
+    try {
+        await axios.post("http://127.0.0.1:8000/api/register/", {
+            username,
+            email,
+            password
+        });
+        console.log("Registro exitoso");
+        return true;
+    } catch (error) {
+        console.error("Error en el registro", error.response.data);
+        return false;
+    }
+}
